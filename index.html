@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>hello</title>
+  <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div id="main">
+  </div>
+
+
+  <script type="text/javascript">
+  var config = {
+    apiKey: "AIzaSyDUkXMbGAkNsGNjVoBG8TXxfBz2sRaC-BM",
+    authDomain: "caraudem.firebaseapp.com",
+    databaseURL: "https://caraudem.firebaseio.com",
+    projectId: "caraudem",
+    storageBucket: "caraudem.appspot.com",
+    messagingSenderId: "35890410609"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
+  var who = database.ref('who');
+  who.on('value', function(snapshot) {
+    var element = document.getElementById("main");
+	  element.style.backgroundImage = 'url(' + snapshot.val() + '.gif)';
+    console.log(snapshot.val())
+  });
+  </script>
+</body>
+</html>
